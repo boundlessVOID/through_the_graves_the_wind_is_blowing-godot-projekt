@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvrwhfpvg346r"]
+
+[ext_resource type="Texture2D" uid="uid://c561dnfid1sa" path="res://sprites/placeholders/white.png" id="1_bqn3j"]
+[ext_resource type="Texture2D" uid="uid://b8tjutwuyv5on" path="res://sprites/placeholders/boxWallsPH.png" id="1_g2tbl"]
+[ext_resource type="Texture2D" uid="uid://cpm8kxh3mg4sn" path="res://sprites/placeholders/boxTopPH.png" id="2_oq5cr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypqmy"]
+
+[node name="Box" type="StaticBody2D"]
+
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.34509805)
+z_index = -1
+position = Vector2(30, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_bqn3j")
+
+[node name="BoxWallsPh" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_g2tbl")
+
+[node name="BoxTopPh" type="Sprite2D" parent="."]
+position = Vector2(0, -56)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_oq5cr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_ypqmy")
