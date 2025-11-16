@@ -1,0 +1,71 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=16 format=3 uid="uid://dwordkb1iu2d"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a5481"]
+animation = &"atk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_anb1e"]
+animation = &"atkCh"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dsvtd"]
+animation = &"hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w8jgv"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ik457"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_avalj"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_87lky"]
+advance_mode = 2
+advance_expression = "isMelAtk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nxycq"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_351qu"]
+advance_mode = 2
+advance_expression = "isHurt"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2818h"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sukmp"]
+advance_mode = 2
+advance_expression = "isHurt"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pv3au"]
+advance_mode = 2
+advance_expression = "mobMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_163b3"]
+advance_mode = 2
+advance_expression = "!mobMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hmrfi"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "!isMelAtk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_af6dq"]
+advance_mode = 2
+advance_expression = "isMelAtk"
+
+[resource]
+states/Start/position = Vector2(535, 231)
+states/atk/node = SubResource("AnimationNodeAnimation_a5481")
+states/atk/position = Vector2(379, 48)
+states/atkCh/node = SubResource("AnimationNodeAnimation_anb1e")
+states/atkCh/position = Vector2(379, 181)
+states/hurt/node = SubResource("AnimationNodeAnimation_dsvtd")
+states/hurt/position = Vector2(658, 131)
+states/idle/node = SubResource("AnimationNodeAnimation_w8jgv")
+states/idle/position = Vector2(535, 131)
+states/walk/node = SubResource("AnimationNodeAnimation_ik457")
+states/walk/position = Vector2(535, 48)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_avalj"), "idle", "atkCh", SubResource("AnimationNodeStateMachineTransition_87lky"), "atkCh", "atk", SubResource("AnimationNodeStateMachineTransition_nxycq"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_351qu"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_2818h"), "walk", "hurt", SubResource("AnimationNodeStateMachineTransition_sukmp"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_pv3au"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_163b3"), "atk", "idle", SubResource("AnimationNodeStateMachineTransition_hmrfi"), "walk", "atkCh", SubResource("AnimationNodeStateMachineTransition_af6dq")]
+graph_offset = Vector2(4, 7)
