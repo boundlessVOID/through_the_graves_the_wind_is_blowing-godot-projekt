@@ -1,0 +1,71 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=16 format=3 uid="uid://wjy6x2ub48df"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6jjrc"]
+animation = &"Idle_R"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vjs6i"]
+animation = &"Run_R"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8etr5"]
+animation = &"atk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_582u3"]
+animation = &"hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iie6t"]
+animation = &"melAtkChargeR"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nblcg"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ffw3f"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w1mq2"]
+advance_mode = 2
+advance_expression = "isMelAtk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tvkke"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "!isMelAtk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o6pid"]
+advance_mode = 2
+advance_expression = "isHurt"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_316vl"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_km8f8"]
+advance_mode = 2
+advance_expression = "mobMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sn8ur"]
+advance_mode = 2
+advance_expression = "!mobMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6jjrc"]
+advance_mode = 2
+advance_expression = "isMelAtk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vjs6i"]
+advance_mode = 2
+advance_expression = "isHurt"
+
+[resource]
+states/Idle_R/node = SubResource("AnimationNodeAnimation_6jjrc")
+states/Idle_R/position = Vector2(501, 143)
+states/Run_R/node = SubResource("AnimationNodeAnimation_vjs6i")
+states/Run_R/position = Vector2(501, 62)
+states/Start/position = Vector2(501, 234)
+states/atk/node = SubResource("AnimationNodeAnimation_8etr5")
+states/atk/position = Vector2(305, 62)
+states/hurt/node = SubResource("AnimationNodeAnimation_582u3")
+states/hurt/position = Vector2(691, 143)
+states/melAtkChargeR/node = SubResource("AnimationNodeAnimation_iie6t")
+states/melAtkChargeR/position = Vector2(305, 143)
+transitions = ["melAtkChargeR", "atk", SubResource("AnimationNodeStateMachineTransition_nblcg"), "Start", "Idle_R", SubResource("AnimationNodeStateMachineTransition_ffw3f"), "Idle_R", "melAtkChargeR", SubResource("AnimationNodeStateMachineTransition_w1mq2"), "atk", "Idle_R", SubResource("AnimationNodeStateMachineTransition_tvkke"), "Idle_R", "hurt", SubResource("AnimationNodeStateMachineTransition_o6pid"), "hurt", "Idle_R", SubResource("AnimationNodeStateMachineTransition_316vl"), "Idle_R", "Run_R", SubResource("AnimationNodeStateMachineTransition_km8f8"), "Run_R", "Idle_R", SubResource("AnimationNodeStateMachineTransition_sn8ur"), "Run_R", "melAtkChargeR", SubResource("AnimationNodeStateMachineTransition_6jjrc"), "Run_R", "hurt", SubResource("AnimationNodeStateMachineTransition_vjs6i")]
+graph_offset = Vector2(-103, 9)
