@@ -1,0 +1,344 @@
+[gd_scene load_steps=14 format=3 uid="uid://hpqt44bphyej"]
+
+[ext_resource type="Script" uid="uid://c47dqq1fxutum" path="res://scripts/mob_010.gd" id="1_8aahq"]
+[ext_resource type="Script" uid="uid://cqx03q4fl68vw" path="res://scripts/mob_010_animation_tree.gd" id="5_dtwo5"]
+[ext_resource type="Texture2D" uid="uid://t4e3eqhbnw3e" path="res://sprites/Mob010SpriteSheet.png" id="6_et1ov"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dwordkb1iu2d" path="res://animations/mob_010StMc2.tres" id="7_1c5cp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_57g4j"]
+radius = 15.593081
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8aahq"]
+radius = 30.000004
+height = 157.14287
+
+[sub_resource type="Animation" id="Animation_1c5cp"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -2), Vector2(0, -4), Vector2(0, -2), Vector2(0, -4), Vector2(0, -2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.8, 0.83), Vector2(0.8, 0.8), Vector2(0.8, 0.83), Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_iib7e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_et1ov"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.81, 0.81), Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_xvgt5"]
+resource_name = "atk"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.75),
+"transitions": PackedFloat32Array(4, 3, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.9), Vector2(0.8, 1), Vector2(0.8, 0.95)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.75),
+"transitions": PackedFloat32Array(4, 3, 1),
+"update": 0,
+"values": [-0.1186823891356146, 0.2617994, 0.20943952]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(4, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_wqber"]
+resource_name = "atkCh"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.8, 0.9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [0.0, -0.1186823891356146]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_55xne"]
+resource_name = "hurt"
+length = 0.34
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.15707964, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.85, 0.95), Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xvgt5"]
+_data = {
+&"RESET": SubResource("Animation_iib7e"),
+&"atk": SubResource("Animation_xvgt5"),
+&"atkCh": SubResource("Animation_wqber"),
+&"hurt": SubResource("Animation_55xne"),
+&"idle": SubResource("Animation_et1ov"),
+&"walk": SubResource("Animation_1c5cp")
+}
+
+[node name="Mob010" type="CharacterBody2D"]
+scale = Vector2(0.7, 0.7)
+collision_layer = 10
+collision_mask = 9
+script = ExtResource("1_8aahq")
+
+[node name="CollBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7.6293945e-06)
+scale = Vector2(1.6, 1.6)
+shape = SubResource("CircleShape2D_57g4j")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 10
+collision_mask = 0
+
+[node name="HitBox" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-1.4285715, -75.71429)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_8aahq")
+debug_color = Color(1, 0.3637057, 0.2240296, 0.41960785)
+
+[node name="MeleeAttackCD" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Mob010Animation" type="Node2D" parent="." node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("5_dtwo5")
+animation_tree = NodePath("Mob010SpriteSheet/AnimationTree")
+
+[node name="MelAtkOrigin" type="Marker2D" parent="Mob010Animation"]
+unique_name_in_owner = true
+position = Vector2(0, -72.05499)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Mob010SpriteSheet" type="Sprite2D" parent="Mob010Animation"]
+y_sort_enabled = true
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_et1ov")
+offset = Vector2(0, -100)
+hframes = 2
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mob010Animation/Mob010SpriteSheet"]
+libraries = {
+&"": SubResource("AnimationLibrary_xvgt5")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Mob010Animation/Mob010SpriteSheet"]
+tree_root = ExtResource("7_1c5cp")
+advance_expression_base_node = NodePath("../../..")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="atkDelay" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="timeout" from="MeleeAttackCD" to="." method="_on_melee_attack_cd_timeout"]
+[connection signal="animation_finished" from="Mob010Animation/Mob010SpriteSheet/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="timeout" from="atkDelay" to="." method="_on_atk_delay_timeout"]

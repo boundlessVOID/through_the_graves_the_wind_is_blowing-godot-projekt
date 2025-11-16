@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://6egpfe2g675a"]
+
+[ext_resource type="Texture2D" uid="uid://bhrvuifw7hfib" path="res://sprites/placeholders/melAtkMob1.png" id="1_54di4"]
+[ext_resource type="Script" uid="uid://bc8e8vmf5c6kf" path="res://scripts/mel_atk_mob_1.gd" id="1_pydw8"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_easmo"]
+points = PackedVector2Array(0, 0, 90, -90, 130, 0, 90, 90)
+
+[node name="MelAtk_Mob1" type="Area2D"]
+scale = Vector2(1.5, 1.5)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_pydw8")
+
+[node name="MelAtkMob1" type="Sprite2D" parent="."]
+position = Vector2(12, 15)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_54di4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.495, 0.495)
+shape = SubResource("ConvexPolygonShape2D_easmo")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
